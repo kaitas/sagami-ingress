@@ -1,0 +1,81 @@
+// JavaScript Document
+
+	// ajax loader animation
+    jQuery(document).ready(function()
+    {
+       jQuery(this).ajaxStart(function()
+       {
+          jQuery("body").append("<div id='geo-overlay'><img src='wp-content/plugins/nextgen-gallery-geo/css/ajax-loader.gif' /></div>");
+       });
+ 
+       jQuery(this).ajaxStop(function()
+       {
+          jQuery("#geo-overlay").remove();
+       });
+    });
+
+
+// ajax map slider
+function showmap_ajax(option, mid)
+{
+	// map already loaded?
+	if ( jQuery("#ngg_geo_map_"+mid).length > 0 ) 
+	  	{
+		   	jQuery("#ngg-geo-"+mid).slideToggle("slow");
+			jQuery("#geo_slide_"+mid).toggleClass("active");
+			return false;
+		}
+
+	else
+	{	
+			// ajax request
+			jQuery.post(
+			   MyAjax.ajaxurl, 
+			   {
+				  'action':'ngg_geo_showmap',
+				  'options': option,
+			   }, 
+			   
+			   // showmap (first time)
+			   function(response)
+			   { 
+			   jQuery("#ngg-geo-"+mid).html(response);
+			   jQuery("#ngg-geo-"+mid).slideToggle("slow");
+			   jQuery("#geo_slide_"+mid).toggleClass("active");
+			   eval("nggGeoMap_"+mid+"();");
+			   return false;
+			   }
+	   
+	   
+				);
+	}
+}
+
+jQuery(document).ready(function(){
+
+	jQuery(".geo-btn-slide").click(function(){
+		jQuery("#geo_panel").slideToggle("slow");
+		jQuery("#geo_panel").toggleClass("geo-active"); return false;
+	});
+	
+
+});
+
+// ajax lightbox (used by worldmap)
+function lightbox_ajax(gid)
+{
+	
+jQuery.post(
+   MyAjax.ajaxurl, 
+   {
+      'action':'ngg_geo_lightbox',
+      'gid': gid,
+   }, 
+   function(response)
+   { 
+	eval (response);
+   }
+   
+   
+);
+}
