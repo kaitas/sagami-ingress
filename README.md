@@ -1,2 +1,2 @@
 # sagami-ingress
-Archived from http://ingress.sagamiharacitymuseum.jp/
+Archived from https://kaitas.github.io/sagami-ingress/

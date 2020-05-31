@@ -3,7 +3,7 @@ VERSION:2.0
 PRODID:-//153.127.240.195//NONSGML kigkonsult.se iCalcreator 2.26.9//
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-FROM-URL:http://ingress.sagamiharacitymuseum.jp
+X-FROM-URL:https://kaitas.github.io/sagami-ingress/
 X-WR-TIMEZONE:Asia/Tokyo
 BEGIN:VTIMEZONE
 TZID:Asia/Tokyo
